@@ -1,0 +1,13 @@
+from fastapi import FastAPI
+from payments import criar_checkout
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"status": "online"}
+
+@app.get("/pagar")
+def pagar():
+    url = criar_checkout()
+    return {"url": url}
